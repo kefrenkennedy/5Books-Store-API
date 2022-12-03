@@ -1,0 +1,1533 @@
+openapi: 3.0.3
+info:
+  title: Your Project API
+  version: 1.0.0
+  description: Your project description
+paths:
+  /api/adress/{id}/:
+    get:
+      operationId: api_adress_retrieve
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+          format: uuid
+        description: A UUID string identifying this address.
+        required: true
+      tags:
+      - api
+      security:
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SerializerAddress'
+          description: ''
+    put:
+      operationId: api_adress_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+          format: uuid
+        description: A UUID string identifying this address.
+        required: true
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SerializerAddress'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/SerializerAddress'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/SerializerAddress'
+        required: true
+      security:
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SerializerAddress'
+          description: ''
+    patch:
+      operationId: api_adress_partial_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+          format: uuid
+        description: A UUID string identifying this address.
+        required: true
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedSerializerAddress'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedSerializerAddress'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedSerializerAddress'
+      security:
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SerializerAddress'
+          description: ''
+  /api/authors/:
+    get:
+      operationId: api_authors_list
+      tags:
+      - api
+      security:
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Author'
+          description: ''
+    post:
+      operationId: api_authors_create
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Author'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Author'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Author'
+        required: true
+      security:
+      - tokenAuth: []
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Author'
+          description: ''
+  /api/authors/{id}/:
+    get:
+      operationId: api_authors_retrieve
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+          format: uuid
+        description: A UUID string identifying this author.
+        required: true
+      tags:
+      - api
+      security:
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Author'
+          description: ''
+    put:
+      operationId: api_authors_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+          format: uuid
+        description: A UUID string identifying this author.
+        required: true
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Author'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Author'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Author'
+        required: true
+      security:
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Author'
+          description: ''
+    patch:
+      operationId: api_authors_partial_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+          format: uuid
+        description: A UUID string identifying this author.
+        required: true
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedAuthor'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedAuthor'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedAuthor'
+      security:
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Author'
+          description: ''
+    delete:
+      operationId: api_authors_destroy
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+          format: uuid
+        description: A UUID string identifying this author.
+        required: true
+      tags:
+      - api
+      security:
+      - tokenAuth: []
+      responses:
+        '204':
+          description: No response body
+  /api/books/:
+    get:
+      operationId: api_books_list
+      tags:
+      - api
+      security:
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Book'
+          description: ''
+    post:
+      operationId: api_books_create
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Book'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Book'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Book'
+        required: true
+      security:
+      - tokenAuth: []
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Book'
+          description: ''
+  /api/books/{id}:
+    put:
+      operationId: api_books_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+          format: uuid
+        description: A UUID string identifying this book.
+        required: true
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Book'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Book'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Book'
+        required: true
+      security:
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Book'
+          description: ''
+    patch:
+      operationId: api_books_partial_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+          format: uuid
+        description: A UUID string identifying this book.
+        required: true
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedBook'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedBook'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedBook'
+      security:
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Book'
+          description: ''
+    delete:
+      operationId: api_books_destroy
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+          format: uuid
+        description: A UUID string identifying this book.
+        required: true
+      tags:
+      - api
+      security:
+      - tokenAuth: []
+      responses:
+        '204':
+          description: No response body
+  /api/categories/:
+    get:
+      operationId: api_categories_list
+      tags:
+      - api
+      security:
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Categories'
+          description: ''
+    post:
+      operationId: api_categories_create
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Categories'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Categories'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Categories'
+        required: true
+      security:
+      - tokenAuth: []
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Categories'
+          description: ''
+  /api/categories/{id}/:
+    put:
+      operationId: api_categories_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+          format: uuid
+        description: A UUID string identifying this categories.
+        required: true
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Categories'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Categories'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Categories'
+        required: true
+      security:
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Categories'
+          description: ''
+    patch:
+      operationId: api_categories_partial_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+          format: uuid
+        description: A UUID string identifying this categories.
+        required: true
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedCategories'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedCategories'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedCategories'
+      security:
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Categories'
+          description: ''
+    delete:
+      operationId: api_categories_destroy
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+          format: uuid
+        description: A UUID string identifying this categories.
+        required: true
+      tags:
+      - api
+      security:
+      - tokenAuth: []
+      responses:
+        '204':
+          description: No response body
+  /api/credit_card/:
+    get:
+      operationId: api_credit_card_list
+      tags:
+      - api
+      security:
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/CardGet'
+          description: ''
+    post:
+      operationId: api_credit_card_create
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Card'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Card'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Card'
+        required: true
+      security:
+      - tokenAuth: []
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Card'
+          description: ''
+  /api/credit_card/{id}:
+    put:
+      operationId: api_credit_card_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+          format: uuid
+        description: A UUID string identifying this card.
+        required: true
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CardGet'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/CardGet'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/CardGet'
+        required: true
+      security:
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CardGet'
+          description: ''
+    patch:
+      operationId: api_credit_card_partial_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+          format: uuid
+        description: A UUID string identifying this card.
+        required: true
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedCardGet'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedCardGet'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedCardGet'
+      security:
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CardGet'
+          description: ''
+    delete:
+      operationId: api_credit_card_destroy
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+          format: uuid
+        description: A UUID string identifying this card.
+        required: true
+      tags:
+      - api
+      security:
+      - tokenAuth: []
+      responses:
+        '204':
+          description: No response body
+  /api/login/:
+    post:
+      operationId: api_login_create
+      tags:
+      - api
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/AuthToken'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/AuthToken'
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AuthToken'
+        required: true
+      security:
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AuthToken'
+          description: ''
+  /api/reviews/:
+    get:
+      operationId: api_reviews_list
+      tags:
+      - api
+      security:
+      - tokenAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Review'
+          description: ''
+    post:
+      operationId: api_reviews_create
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Review'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Review'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Review'
+        required: true
+      security:
+      - tokenAuth: []
+      - {}
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Review'
+          description: ''
+  /api/reviews/{review_id}/:
+    get:
+      operationId: api_reviews_retrieve
+      parameters:
+      - in: path
+        name: review_id
+        schema:
+          type: string
+        required: true
+      tags:
+      - api
+      security:
+      - tokenAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ReviewDetail'
+          description: ''
+    put:
+      operationId: api_reviews_update
+      parameters:
+      - in: path
+        name: review_id
+        schema:
+          type: string
+        required: true
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ReviewDetail'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/ReviewDetail'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/ReviewDetail'
+        required: true
+      security:
+      - tokenAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ReviewDetail'
+          description: ''
+    patch:
+      operationId: api_reviews_partial_update
+      parameters:
+      - in: path
+        name: review_id
+        schema:
+          type: string
+        required: true
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedReviewDetail'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedReviewDetail'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedReviewDetail'
+      security:
+      - tokenAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ReviewDetail'
+          description: ''
+    delete:
+      operationId: api_reviews_destroy
+      parameters:
+      - in: path
+        name: review_id
+        schema:
+          type: string
+        required: true
+      tags:
+      - api
+      security:
+      - tokenAuth: []
+      - {}
+      responses:
+        '204':
+          description: No response body
+  /api/users/:
+    get:
+      operationId: api_users_list
+      tags:
+      - api
+      security:
+      - tokenAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/User'
+          description: ''
+    post:
+      operationId: api_users_create
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/User'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/User'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/User'
+        required: true
+      security:
+      - tokenAuth: []
+      - {}
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+          description: ''
+  /api/users/{id}:
+    get:
+      operationId: api_users_retrieve
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+          format: uuid
+        description: A UUID string identifying this user.
+        required: true
+      tags:
+      - api
+      security:
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+          description: ''
+    put:
+      operationId: api_users_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+          format: uuid
+        description: A UUID string identifying this user.
+        required: true
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/User'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/User'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/User'
+        required: true
+      security:
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+          description: ''
+    patch:
+      operationId: api_users_partial_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+          format: uuid
+        description: A UUID string identifying this user.
+        required: true
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedUser'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedUser'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedUser'
+      security:
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+          description: ''
+  /api/users/{id}/management:
+    get:
+      operationId: api_users_management_retrieve
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+          format: uuid
+        description: A UUID string identifying this user.
+        required: true
+      tags:
+      - api
+      security:
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+          description: ''
+    put:
+      operationId: api_users_management_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+          format: uuid
+        description: A UUID string identifying this user.
+        required: true
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/User'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/User'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/User'
+        required: true
+      security:
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+          description: ''
+    patch:
+      operationId: api_users_management_partial_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: string
+          format: uuid
+        description: A UUID string identifying this user.
+        required: true
+      tags:
+      - api
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedUser'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedUser'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedUser'
+      security:
+      - tokenAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+          description: ''
+components:
+  schemas:
+    AuthToken:
+      type: object
+      properties:
+        username:
+          type: string
+          writeOnly: true
+        password:
+          type: string
+          writeOnly: true
+        token:
+          type: string
+          readOnly: true
+      required:
+      - password
+      - token
+      - username
+    Author:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          readOnly: true
+        name:
+          type: string
+          maxLength: 127
+      required:
+      - id
+      - name
+    Book:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          readOnly: true
+        name:
+          type: string
+          maxLength: 126
+        author:
+          allOf:
+          - $ref: '#/components/schemas/Author'
+          readOnly: true
+        category:
+          allOf:
+          - $ref: '#/components/schemas/Categories'
+          readOnly: true
+        date_release:
+          type: string
+          format: date
+        book_cover:
+          type: string
+          format: uri
+          maxLength: 255
+        price:
+          type: string
+          format: decimal
+          pattern: ^-?\d{0,4}(?:\.\d{0,2})?$
+        description:
+          type: string
+        publishing_company:
+          type: string
+          maxLength: 126
+        language:
+          type: string
+          maxLength: 50
+        edition_number:
+          type: string
+          maxLength: 50
+        number_pages:
+          type: integer
+          maximum: 2147483647
+          minimum: -2147483648
+        country:
+          type: string
+          maxLength: 50
+        isbn:
+          type: integer
+          maximum: 13
+          minimum: 0
+        type:
+          $ref: '#/components/schemas/TypeEnum'
+        amount:
+          type: integer
+          maximum: 2147483647
+          minimum: 0
+        weigth:
+          type: integer
+          maximum: 2147483647
+          minimum: 0
+        format:
+          type: integer
+          maximum: 2147483647
+          minimum: 0
+        length:
+          type: string
+          format: decimal
+          pattern: ^-?\d{0,2}(?:\.\d{0,2})?$
+        width:
+          type: string
+          format: decimal
+          pattern: ^-?\d{0,2}(?:\.\d{0,2})?$
+        diameter:
+          type: integer
+          maximum: 2147483647
+          minimum: 0
+      required:
+      - amount
+      - author
+      - book_cover
+      - category
+      - country
+      - date_release
+      - description
+      - diameter
+      - edition_number
+      - format
+      - id
+      - isbn
+      - language
+      - length
+      - name
+      - number_pages
+      - price
+      - publishing_company
+      - weigth
+      - width
+    Card:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          readOnly: true
+        user:
+          type: string
+          format: uuid
+          readOnly: true
+        card_name:
+          type: string
+          maxLength: 25
+        number_card:
+          type: string
+          maxLength: 16
+        expire_date:
+          type: string
+          maxLength: 6
+      required:
+      - card_name
+      - expire_date
+      - id
+      - number_card
+      - user
+    CardGet:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          readOnly: true
+        card_name:
+          type: string
+          maxLength: 25
+        number_card:
+          type: string
+          maxLength: 16
+        expire_date:
+          type: string
+          maxLength: 6
+      required:
+      - card_name
+      - expire_date
+      - id
+      - number_card
+    Categories:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          readOnly: true
+        name:
+          type: string
+          maxLength: 125
+      required:
+      - id
+      - name
+    PatchedAuthor:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          readOnly: true
+        name:
+          type: string
+          maxLength: 127
+    PatchedBook:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          readOnly: true
+        name:
+          type: string
+          maxLength: 126
+        author:
+          allOf:
+          - $ref: '#/components/schemas/Author'
+          readOnly: true
+        category:
+          allOf:
+          - $ref: '#/components/schemas/Categories'
+          readOnly: true
+        date_release:
+          type: string
+          format: date
+        book_cover:
+          type: string
+          format: uri
+          maxLength: 255
+        price:
+          type: string
+          format: decimal
+          pattern: ^-?\d{0,4}(?:\.\d{0,2})?$
+        description:
+          type: string
+        publishing_company:
+          type: string
+          maxLength: 126
+        language:
+          type: string
+          maxLength: 50
+        edition_number:
+          type: string
+          maxLength: 50
+        number_pages:
+          type: integer
+          maximum: 2147483647
+          minimum: -2147483648
+        country:
+          type: string
+          maxLength: 50
+        isbn:
+          type: integer
+          maximum: 13
+          minimum: 0
+        type:
+          $ref: '#/components/schemas/TypeEnum'
+        amount:
+          type: integer
+          maximum: 2147483647
+          minimum: 0
+        weigth:
+          type: integer
+          maximum: 2147483647
+          minimum: 0
+        format:
+          type: integer
+          maximum: 2147483647
+          minimum: 0
+        length:
+          type: string
+          format: decimal
+          pattern: ^-?\d{0,2}(?:\.\d{0,2})?$
+        width:
+          type: string
+          format: decimal
+          pattern: ^-?\d{0,2}(?:\.\d{0,2})?$
+        diameter:
+          type: integer
+          maximum: 2147483647
+          minimum: 0
+    PatchedCardGet:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          readOnly: true
+        card_name:
+          type: string
+          maxLength: 25
+        number_card:
+          type: string
+          maxLength: 16
+        expire_date:
+          type: string
+          maxLength: 6
+    PatchedCategories:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          readOnly: true
+        name:
+          type: string
+          maxLength: 125
+    PatchedReviewDetail:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          readOnly: true
+        stars:
+          type: integer
+          maximum: 5
+          minimum: 1
+        rating:
+          type: string
+          maxLength: 600
+        user:
+          type: string
+          format: uuid
+          readOnly: true
+        book:
+          type: string
+          format: uuid
+          readOnly: true
+          nullable: true
+    PatchedSerializerAddress:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          readOnly: true
+        street_name:
+          type: string
+        district:
+          type: string
+        number:
+          type: integer
+          maximum: 2147483647
+          minimum: -2147483648
+        zip_code:
+          type: string
+          maxLength: 8
+        city:
+          type: string
+        state:
+          type: string
+          maxLength: 2
+        address_complement:
+          type: string
+    PatchedUser:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          readOnly: true
+        username:
+          type: string
+          description: Required. 150 characters or fewer. Letters, digits and @/./+/-/_
+            only.
+          pattern: ^[\w.@+-]+$
+          maxLength: 150
+        first_name:
+          type: string
+          maxLength: 150
+        last_name:
+          type: string
+          maxLength: 150
+        email:
+          type: string
+          format: email
+          title: Email address
+          maxLength: 254
+        is_active:
+          type: boolean
+          title: Active
+          description: Designates whether this user should be treated as active. Unselect
+            this instead of deleting accounts.
+        cpf:
+          type: string
+          maxLength: 14
+        address:
+          $ref: '#/components/schemas/SerializerAddress'
+        date_joined:
+          type: string
+          format: date-time
+        password:
+          type: string
+          writeOnly: true
+          maxLength: 128
+    Review:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          readOnly: true
+        stars:
+          type: integer
+          maximum: 5
+          minimum: 1
+        rating:
+          type: string
+          maxLength: 600
+        user:
+          type: string
+          format: uuid
+        book:
+          type: string
+          format: uuid
+          nullable: true
+      required:
+      - id
+      - rating
+      - stars
+    ReviewDetail:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          readOnly: true
+        stars:
+          type: integer
+          maximum: 5
+          minimum: 1
+        rating:
+          type: string
+          maxLength: 600
+        user:
+          type: string
+          format: uuid
+          readOnly: true
+        book:
+          type: string
+          format: uuid
+          readOnly: true
+          nullable: true
+      required:
+      - book
+      - id
+      - rating
+      - stars
+      - user
+    SerializerAddress:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          readOnly: true
+        street_name:
+          type: string
+        district:
+          type: string
+        number:
+          type: integer
+          maximum: 2147483647
+          minimum: -2147483648
+        zip_code:
+          type: string
+          maxLength: 8
+        city:
+          type: string
+        state:
+          type: string
+          maxLength: 2
+        address_complement:
+          type: string
+      required:
+      - address_complement
+      - city
+      - district
+      - id
+      - number
+      - state
+      - street_name
+      - zip_code
+    TypeEnum:
+      enum:
+      - E-book
+      - Book
+      type: string
+    User:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          readOnly: true
+        username:
+          type: string
+          description: Required. 150 characters or fewer. Letters, digits and @/./+/-/_
+            only.
+          pattern: ^[\w.@+-]+$
+          maxLength: 150
+        first_name:
+          type: string
+          maxLength: 150
+        last_name:
+          type: string
+          maxLength: 150
+        email:
+          type: string
+          format: email
+          title: Email address
+          maxLength: 254
+        is_active:
+          type: boolean
+          title: Active
+          description: Designates whether this user should be treated as active. Unselect
+            this instead of deleting accounts.
+        cpf:
+          type: string
+          maxLength: 14
+        address:
+          $ref: '#/components/schemas/SerializerAddress'
+        date_joined:
+          type: string
+          format: date-time
+        password:
+          type: string
+          writeOnly: true
+          maxLength: 128
+      required:
+      - address
+      - cpf
+      - id
+      - password
+      - username
+  securitySchemes:
+    tokenAuth:
+      type: apiKey
+      in: header
+      name: Authorization
+      description: Token-based authentication with required prefix "Token"
